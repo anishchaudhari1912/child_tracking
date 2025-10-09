@@ -4,7 +4,8 @@ const db=require('./Config/db');
 const passport=require('./Auth');
 const LocalStrategy=require('passport-local').Strategy;
 const User=require('./Models/user');
-
+require('dotenv').config();
+const PORT=process.env.PORT || 3000;
 
 //Middleware Function --
 const logRequest=(req,res,next)=>{
@@ -63,4 +64,6 @@ app.use('/location',locationRoutes);
 
 
 
-app.listen(3000)
+app.listen(PORT,()=>{
+  console.log('Listening on port 3000');
+})
