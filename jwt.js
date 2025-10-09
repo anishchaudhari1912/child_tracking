@@ -3,6 +3,11 @@ require("dotenv").config();
 
 
 const jwtAuthMiddleware=(req,res,next) => {
+
+    //first check request headers has authorizaation or not
+
+    const authorization =req.headers.authorization
+    if(!authorization) return res.status(401).json({error:'Token not Found'});
     
      //Extract the jwt token from the request headers
  
